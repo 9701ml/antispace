@@ -1,0 +1,24 @@
+{
+  "name": "zerowidth",
+  "version": "1.0.0",
+  "description": "It makes text invisible.",
+  "main": "./main.js",
+  "types": "index.d.ts",
+  "typings": "index.d.ts",
+  "scripts": {
+    "release-major": "npm version major && git push && git push --tags",
+    "release-minor": "npm version minor && git push && git push --tags",
+    "release-patch": "npm version patch && git push && git push --tags",
+    "format": "prettier"
+  },
+  "keywords": [],
+  "author": "Jack <git@5079.ml> (https://5079.ml)",
+  "repository": "Jack5079/zerowidth",
+  "license": "ISC",
+  "type": "module",
+  "module": "./main.js",
+  "exports": "./main.js",
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}
