@@ -1,15 +1,5 @@
-/** Given an IP, will return if the IP is from Roblox or not. */
-type zerowidth = {
-  encode: (target: string) => string
-  decode: (encoded: string) => string
-}
+export const encodev1: (target: string) => string
+export const encodev2: (target: string) => string
 
-
-/**
- * Base 2
- */
-export const v1: zerowidth
-/**
- * Base 3
- */
-export const v2: zerowidth
+export const decodev1: (target: string) => string
+export const decodev2: (target: string) => string
