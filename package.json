@@ -1,5 +1,5 @@
 {
-  "name": "zerowidth",
+  "name": "antispace",
   "version": "1.0.0",
   "description": "It makes text invisible.",
   "main": "./main.js",
@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "Jack <git@5079.ml> (https://5079.ml)",
-  "repository": "Jack5079/zerowidth",
+  "repository": "Jack5079/antispace",
   "license": "ISC",
   "type": "module",
   "module": "./main.js",
