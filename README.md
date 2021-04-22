@@ -1,6 +1,6 @@
 # zerowidth
 
-Makes text invisible.
+It makes text invisible.
 
 ```js
 import { encodev2,decodev2, decodev1,encodev1 } from 'zerowidth'
