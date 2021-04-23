@@ -10,14 +10,13 @@ export const encode = (a) =>
     .map(
       (a) =>
         a
-          .toString(7)
+          .toString(6)
           .replaceAll('0', '\u200c') // zero-width non joiner
           .replaceAll('1', '\u200b') // zero-width space
           .replaceAll('2', '\u2060') // Word Joiner
           .replaceAll('3', '\u2063') // Invisible Separator
           .replaceAll('4', '\ufe0e') // ︎ Variation Selector-15
           .replaceAll('5', '\ufe0f') // ︎ Variation Selector-16
-          .replaceAll('6', '\u2028') // Line Separator
     )
     .join('\u200d') + '\u200d' // zero width joiner
 
@@ -39,8 +38,7 @@ export const decode = (a) =>
           .replaceAll('\u2063', '3') // Invisible Separator
           .replaceAll('\ufe0e', '4') // ︎ Variation Selector-15
           .replaceAll('\ufe0f', '5') // ︎ Variation Selector-16
-          .replaceAll('\u2028', '6') // Line Separator
     )
-    .map((a) => parseInt(a, 7))
+    .map((a) => parseInt(a, 6))
     .map((a) => String.fromCharCode(a))
     .join('')
