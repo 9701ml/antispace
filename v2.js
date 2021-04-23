@@ -24,6 +24,7 @@ export const encode = (a) =>
 export const decode = (a) =>
   a
     .split('\u200d')
+    .filter(Boolean)
     .map((a) =>
       a
         .replaceAll('\u200c', '0')
