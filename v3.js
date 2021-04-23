@@ -1,3 +1,28 @@
+const characters = [
+  '\u2060', // Word Joiner
+  '\u2061', // FUNCTION APPLICATION
+  '\u2062', // INVISIBLE TIMES
+  '\u2063', // INVISIBLE SEPARATOR
+  '\u2064', // INVISIBLE PLUS
+  '\u2066', // LEFT - TO - RIGHT ISOLATE
+  '\u2067', // RIGHT - TO - LEFT ISOLATE
+  '\u2068', // FIRST STRONG ISOLATE
+  '\u2069', // POP DIRECTIONAL ISOLATE
+  '\u206A', // INHIBIT SYMMETRIC SWAPPING
+  '\u206B', // ACTIVATE SYMMETRIC SWAPPING
+  '\u206C', // INHIBIT ARABIC FORM SHAPING
+  '\u206D', // ACTIVATE ARABIC FORM SHAPING
+  '\u206E', // NATIONAL DIGIT SHAPES
+  '\u206F', // NOMINAL DIGIT SHAPES
+  '\u200B', // Zero-Width Space
+  '\u200C', // Zero Width Non-Joiner
+  '\u200E', // Left-To-Right Mark
+  '\u200F', // Right-To-Left Mark
+  '\u061C', // Arabic Letter Mark
+  '\uFEFF', // Byte Order Mark
+  '\u180E', // Mongolian Vowel Separator
+  '\u00AD' // soft-hyphen
+]
 /**
  *
  * @param {string} a
@@ -7,18 +32,15 @@ export const encode = (a) =>
   a
     .split('')
     .map((a) => a.charCodeAt(0))
-    .map(
-      (a) =>
-        a
-          .toString(6)
-          .replaceAll('0', '\u200c') // zero-width non joiner
-          .replaceAll('1', '\u200b') // zero-width space
-          .replaceAll('2', '\u2060') // Word Joiner
-          .replaceAll('3', '\u2063') // Invisible Separator
-          .replaceAll('4', '\ufe0e') // ︎ Variation Selector-15
-          .replaceAll('5', '\ufe0f') // ︎ Variation Selector-16
-    )
-    .join('\u200d') + '\u200d' // zero width joiner
+    .map((a) => {
+      let baseidk = a.toString(characters.length)
+
+      characters.forEach((character, index) => {
+        baseidk = baseidk.replaceAll(index.toString(characters.length), character)
+      })
+      return baseidk
+    })
+    .join('\u200d')
 
 /**
  *
@@ -28,17 +50,17 @@ export const encode = (a) =>
 export const decode = (a) =>
   a
     .split('\u200d') // zero width joiner
-    .filter(Boolean)
-    .map(
-      (a) =>
-        a
-          .replaceAll('\u200c', '0') // zero-width non joiner
-          .replaceAll('\u200b', '1') // zero-width space
-          .replaceAll('\u2060', '2') // Word Joiner
-          .replaceAll('\u2063', '3') // Invisible Separator
-          .replaceAll('\ufe0e', '4') // ︎ Variation Selector-15
-          .replaceAll('\ufe0f', '5') // ︎ Variation Selector-16
-    )
-    .map((a) => parseInt(a, 6))
+    .map((a) => {
+      let baseidk = a
+      characters.forEach((character, index) => {
+        baseidk = baseidk.replaceAll(
+          character,
+          index.toString(characters.length)
+        )
+      })
+
+      return baseidk
+    })
+    .map((a) => parseInt(a, characters.length))
     .map((a) => String.fromCharCode(a))
     .join('')
