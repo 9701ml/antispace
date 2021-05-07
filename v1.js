@@ -1,3 +1,7 @@
+export const characters = [
+    '\u200c',
+    '\u200b'
+]
 /**
  * 
  * @param {string} a 
