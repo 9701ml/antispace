@@ -1,4 +1,4 @@
-const characters = [
+export const characters = [
   '\u2060', // Word Joiner
   '\u2061', // FUNCTION APPLICATION
   '\u2062', // INVISIBLE TIMES
