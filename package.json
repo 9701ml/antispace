@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "Jack <git@5079.ml> (https://5079.ml)",
-  "repository": "9701ml/antispace",
+  "repository": "Jack5079/antispace",
   "license": "ISC",
   "type": "module",
   "module": "./main.js",
