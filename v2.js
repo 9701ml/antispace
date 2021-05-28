@@ -1,5 +1,5 @@
 export const characters = [
-  '\u200c'
+  '\u200c',
   '\u200b',
   '\u2060'
 ]
