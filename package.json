@@ -1,6 +1,6 @@
 {
   "name": "antispace",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "It makes text invisible.",
   "main": "./main.js",
   "types": "index.d.ts",

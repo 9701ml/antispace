@@ -149,7 +149,7 @@ export const encode = (a) =>
   Array.from(a)
     .map((a) => a.codePointAt(0).toString())
     .map(encodenumber)
-    .join('\ue007f')
+    .join(String.fromCodePoint(917631))
 
 /**
  *
@@ -158,7 +158,7 @@ export const encode = (a) =>
  */
 export const decode = (a) =>
   a
-    .split('\ue007f') // zero width joiner
+    .split(String.fromCodePoint(917631)) // zero width joiner
     .map(decodenumber)
     .map((a) => String.fromCodePoint(a))
     .join('')
